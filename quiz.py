@@ -1,8 +1,11 @@
 def show_menu():
+    # Showing options
     print("1. Ask questions")
     print("2. Add a question")
     print("3. Exit game")
 
+    # Defining a variable and populating it with the user choice
+    # Returning that choice variable
     option = input("Enter option: ")
     return option
 
@@ -34,6 +37,7 @@ def ask_questions():
 
 
 def add_question():
+    # populating our question and answer variables by asking for user input
     print("")
     question = input("Enter a question\n>")
 
@@ -42,6 +46,9 @@ def add_question():
 
     answer = input("{0}\n>".format(question))
 
+    # Opening the questions text file
+    # Appending the question and answer variables
+    # Note that each is on a seporate line
     file = open("questions.txt","a")
     file.write(question + "\n")
     file.write(answer + "\n")
@@ -50,6 +57,8 @@ def add_question():
 
 def game_loop():
     while True:
+        # Running the game
+        # Calling fucntions to match user choice
         option = show_menu()
         if option == "1":
             ask_questions()
