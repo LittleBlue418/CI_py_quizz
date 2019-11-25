@@ -6,6 +6,33 @@ def show_menu():
     option = input("Enter option: ")
     return option
 
+def ask_questions():
+    # Defining our empty variables
+    questions = []
+    answers = []
+
+    # Opening our text file and reading the split lines
+    # Into a variable 'lines'
+    # The with statement here will automatically close the file after
+    with open("questions.txt", "r") as file:
+        lines = file.read().splitlines()
+
+    # Enumerating (itterating) through the lines variable
+    # Taking the questions and answers text and appending them to the questions and answers variables
+    for i, text in enumerate(lines):
+        if i%2 == 0:
+            questions.append(text)
+        else:
+            answers.append(text)
+
+    # Zipping together the questions and answers to form
+    # Effectively two columns of text
+    # The questions and answers will be in pairs e can easilly access
+    for question, answer in zip(questions, answers):
+        guess = input(question + "> ")
+
+
+
 def add_question():
     print("")
     question = input("Enter a question\n>")
@@ -25,7 +52,7 @@ def game_loop():
     while True:
         option = show_menu()
         if option == "1":
-            print("You selected 'Ask questions'")
+            ask_questions()
         elif option == "2":
             add_question()
         elif option == "3":
