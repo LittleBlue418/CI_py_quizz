@@ -28,11 +28,30 @@ def ask_questions():
         else:
             answers.append(text)
 
+    # Checking length of the list of questions
+    number_of_questions = len(questions)
+
+    # Calling the zip function here allows us to run it once, rather than
+    # Every time the for loop is run
     # Zipping together the questions and answers to form
     # Effectively two columns of text
-    # The questions and answers will be in pairs e can easilly access
-    for question, answer in zip(questions, answers):
+    # The questions and answers will be in pairs we can easilly access
+    questions_and_answers = zip(questions, answers)
+
+    score = 0
+
+    # Creating the guess variable and populating with user input
+    # Checking to see whether the user guess matches the answer
+    for question, answer in questions_and_answers:
         guess = input(question + "> ")
+        if guess.lower() == answer.lower():
+            score += 1
+            print("Correct!")
+            print(score)
+        else:
+            print("Incorrect!")
+    # At the end of the questions, printing out the user's final score
+    print("You gor {} correct out of {}".format(score, number_of_questions))
 
 
 
@@ -70,4 +89,5 @@ def game_loop():
             print("Invalid option, please enter '1', '2' or '3'")
         print("")
 
+# Running the game
 game_loop()
